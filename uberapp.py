@@ -206,7 +206,7 @@ with tab1:
         fig, ax = plt.subplots(figsize=(10, 4))
         sns.barplot(x=miss.index[:15], y=miss["missing_%"][:15], palette="viridis", ax=ax)
         ax.set_ylabel("Missing (%)"); ax.set_xlabel("")
-        ax.tick_params(axis="x", rotation=45)
+        ax.tick_params(axis="x", rotation=90)
         st.pyplot(fig)
 
         # Correlação com alvo (top 10)
@@ -221,7 +221,7 @@ with tab1:
             fig, ax = plt.subplots(figsize=(10, 5))
             sns.barplot(x=corr_top.index, y=corr_top.values, palette="viridis", ax=ax)
             ax.set_ylabel("Pearson r"); ax.set_xlabel("")
-            ax.tick_params(axis="x", rotation=45)
+            ax.tick_params(axis="x", rotation=90)
             st.pyplot(fig)
 
     with colB:
@@ -233,7 +233,7 @@ with tab1:
             fig, ax = plt.subplots(figsize=(10, 4))
             sns.barplot(x=card.index[:15], y=card["unique_values"][:15], palette="viridis", ax=ax)
             ax.set_ylabel("Unique values"); ax.set_xlabel("")
-            ax.tick_params(axis="x", rotation=45)
+            ax.tick_params(axis="x", rotation=90)
             st.pyplot(fig)
 
         # Taxa de outliers (IQR)
@@ -255,7 +255,7 @@ with tab1:
         fig, ax = plt.subplots(figsize=(10, 5))
         sns.barplot(x=out_rates.index[:12], y=out_rates["outlier_rate"][:12], palette="viridis", ax=ax)
         ax.set_ylabel("Outlier rate"); ax.set_xlabel("")
-        ax.tick_params(axis="x", rotation=45)
+        ax.tick_params(axis="x", rotation=90)
         st.pyplot(fig)
 
     # Distribuições rápidas (segunda fileira)
@@ -309,7 +309,7 @@ with tab2:
                 palette="viridis", marker="o", linewidth=2.5, ax=ax
             )
             ax.set_xlabel("Month"); ax.set_ylabel("Number of Rides")
-            ax.tick_params(axis="x", rotation=45)
+            ax.tick_params(axis="x", rotation=90)
             ax.legend(title="Vehicle Type", bbox_to_anchor=(1.05, 1), loc="upper left")
             ax.grid(alpha=0.3)
             st.pyplot(fig)
@@ -405,7 +405,7 @@ with tab2:
             )
             ax.set_title("Total Revenue per Month", fontsize=16, weight="bold")
             ax.set_xlabel("Month"); ax.set_ylabel("Total Revenue ($)")
-            ax.tick_params(axis="x", rotation=45)
+            ax.tick_params(axis="x", rotation=90)
             ax.grid(alpha=0.3)
             st.pyplot(fig)
 
@@ -422,6 +422,7 @@ with tab2:
             )
             ax.set_title("Distribution of Price per Km by Vehicle Type", fontsize=16, weight="bold")
             ax.set_xlabel("Vehicle Type"); ax.set_ylabel("Price per Km ($/km)")
-            ax.tick_params(axis="x", rotation=45)
+            ax.tick_params(axis="x", rotation=90)
             st.pyplot(fig)
+
 
