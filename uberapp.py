@@ -98,9 +98,22 @@ tab1, tab2 = st.tabs(["EDA", "Data Visualization"])
 # TAB 1 - EDA
 # ==============
 with tab1:
-    st.title("Insane Uber Analytics with Streamlit")
-    st.write("EDA and data visualization for uber rides & such")
-
+    st.title("Uber Rides Analytics Hub with Streamlit")
+    date_min = pd.to_datetime(df.get("DATE"), errors="coerce").min()
+    date_max = pd.to_datetime(df.get("DATE"), errors="coerce").max()
+    n_rows = len(df)
+    n_cities = df["PICKUP_LOCATION"].nunique() if "PICKUP_LOCATION" in df.columns else None
+    n_vehicle = df["VEHICLE_TYPE"].nunique() if "VEHICLE_TYPE" in df.columns else None
+    
+    facts = [
+        f"{n_rows:,} rides",
+        f"{n_vehicle} vehicle types" if n_vehicle else None,
+        f"{n_cities} pickup locations" if n_cities else None,
+        f"{date_min:%b %Y} — {date_max:%b %Y}" if pd.notna(date_min) and pd.notna(date_max) else None,
+    ]
+    facts = " · ".join([f for f in facts if f])
+    
+    st.caption(f"Interactive Streamlit Panel with a **public Kaggle dataset**. {facts}")
     # KPIs
     n_rows, n_cols = df.shape
     total_missing = int(df.isna().sum().sum())
@@ -411,3 +424,4 @@ with tab2:
             ax.set_xlabel("Vehicle Type"); ax.set_ylabel("Price per Km ($/km)")
             ax.tick_params(axis="x", rotation=45)
             st.pyplot(fig)
+
